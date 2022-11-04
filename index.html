@@ -94,6 +94,8 @@
         }
 
         function searchData(e){
+            
+            my_flag=0;
             if(e.target.value == ""){
                 tbody.innerHTML = "";
                 users.forEach(user => {
@@ -102,11 +104,36 @@
                 return;
             }
             users.forEach(user=>{
+                // count_org+=1;
                 if(user.id == e.target.value){
                     tbody.innerHTML = "";
                     createRow(user)
+                    my_flag=1;
+                   
                 }
-            })
+                
+                
+                
+            }
+           
+            
+            
+            
+            )
+            if (my_flag == 0) {
+                    console.log("Not found");
+                    tbody.innerHTML=`
+                    <tr>
+        <td colspan="5">
+            <div class="alert alert-danger">
+                User not found
+
+            </div>
+        </td>
+    </tr>
+                    
+                    `;
+                }
         }
 
         function createRow(user){
@@ -128,6 +155,7 @@
                 tbody.innerHTML += row;
         }
     </script>
+   
 </body>
 
 </html>
